@@ -5,6 +5,10 @@
     font-family: sans-serif;
 }
 
+body {
+    position: relative;
+}
+
 .main-container {
     background-color: plum;
     width: 100vw;
@@ -20,7 +24,7 @@
     font-size: 30px;
     font-weight: 900;
     font-style: italic;
-    color: purple;
+    color: #4c3d52;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,7 +47,7 @@
 .question-box {
     width: 100%;
     height: 20%;
-    background-color: rgb(35, 35, 107);
+    background-color: #3e115e;
     border-radius: 15px 15px 0px 0px;
     color: white;
     display: flex;
@@ -71,7 +75,7 @@
     height: 50px;
     background-color: white;
     border-radius: 25px;
-    border: 3px solid rgb(35, 35, 107);
+    border: 3px solid #3e115e;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +84,7 @@
 }
 
 .option-inp {
-    accent-color: rgb(35, 35, 107);
+    accent-color: #3e115e;
     display: none;
 }
 
@@ -105,11 +109,14 @@
     height: 45px;
     border-radius: 10px;
     border: none;
-    background-color: purple;
+    background-color: #3e115e;
     color: white;
     font-size: 17px;
     font-weight: 600;
     font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn:hover {
@@ -134,21 +141,60 @@
     border: none;
     font-size: 15px;
     font-weight: 600;
-    background-color: rgb(35, 35, 107);
+    background-color: #3e115e;
     color: white;
 }
 
 .n-btn:hover {
-    background-color: rgb(35, 35, 107);
+    background-color: #3e115e;
     opacity: 0.9;
     color: rgb(221, 206, 206);
     cursor: pointer;
 }
 
 .n-btn:active {
-    background-color: rgb(35, 35, 107);
+    background-color: #3e115e;
     opacity: 0.9;
     color: rgb(221, 206, 206);
     border: 2px solid rgb(62, 60, 60);
     box-shadow: 2px 2px 4px rgb(69, 66, 66);
+}
+
+.option-name:hover {
+    cursor: pointer;
+}
+
+.result-window {
+    width: 750px;
+    height: 250px;
+    position: absolute;
+    top: 272px;
+    background-color: #a0c426;
+    left: 385px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+}
+
+.msg {
+    font-size: 25px;
+    height: 40px;
+    font-weight: 800;
+}
+
+.score {
+    font-size: 50px;
+    font-weight: 800;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restart {
+    margin: 10px;
+
 }
