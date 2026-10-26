@@ -1,6 +1,6 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
 }
@@ -11,23 +11,27 @@ body {
 
 .main-container {
     background-color: plum;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
+    padding: 24px 16px;
 }
 
 .title {
-    font-size: 30px;
+    font-size: clamp(22px, 4vw, 30px);
     font-weight: 900;
     font-style: italic;
     color: #4c3d52;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    gap: 8px;
 }
 
 .logo {
@@ -35,52 +39,64 @@ body {
     height: 66px;
     background-image: url("Logo.png");
     background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
 }
 
 .quiz-box {
     background-color: palevioletred;
-    width: 35vw;
-    height: 70vh;
+    width: min(100%, 520px);
+    min-height: 420px;
+    height: min(70vh, 560px);
+    height: min(70dvh, 560px);
+    min-height: 0;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .question-box {
     width: 100%;
-    height: 20%;
+    min-height: 20%;
     background-color: #3e115e;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px 15px 0 0;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
     font-weight: 700;
-    overflow: hidden;
-    text-align: justify;
+    overflow-wrap: anywhere;
+    text-align: center;
 }
 
 .opt-box {
     width: 100%;
-    height: 80%;
-    border-radius: 0px 0px 15px 15px;
+    flex: 1;
+    min-height: 0;
+    border-radius: 0 0 15px 15px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    gap: 12px;
+    padding: 18px;
     background-color: white;
 }
 
 .opt {
-    width: 60vh;
-    height: 50px;
+    width: 100%;
+    max-width: 420px;
+    min-height: 44px;
     background-color: white;
     border-radius: 25px;
     border: 3px solid #3e115e;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 10px;
-    gap: 5px;
+    padding: 8px 12px;
+    gap: 8px;
 }
 
 .option-inp {
@@ -92,9 +108,15 @@ body {
     cursor: pointer;
 }
 
+.opt:has(.option-inp:checked) {
+    background-color: #f1e7f7;
+}
+
 .option-name {
     font-size: 15px;
     font-weight: 550;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .buttons {
@@ -102,11 +124,12 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .btn {
     width: 150px;
-    height: 45px;
+    min-height: 45px;
     border-radius: 10px;
     border: none;
     background-color: #3e115e;
@@ -117,6 +140,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 8px 14px;
 }
 
 .btn:hover {
@@ -136,13 +160,14 @@ body {
 
 .n-btn {
     width: 120px;
-    height: 35px;
+    min-height: 35px;
     border-radius: 10px;
     border: none;
     font-size: 15px;
     font-weight: 600;
     background-color: #3e115e;
     color: white;
+    padding: 8px 12px;
 }
 
 .n-btn:hover {
@@ -165,30 +190,38 @@ body {
 }
 
 .result-window {
-    width: 750px;
-    height: 250px;
-    position: absolute;
-    top: 272px;
+    width: min(750px, calc(100% - 32px));
+    min-height: 250px;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #a0c426;
-    left: 385px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 12px;
+    padding: 24px 16px;
     border: 2px solid black;
+    z-index: 10;
+    text-align: center;
 }
 
 .msg {
-    font-size: 25px;
-    height: 40px;
+    font-size: clamp(18px, 3vw, 25px);
+    min-height: 40px;
+    height: auto;
     font-weight: 800;
+    overflow-wrap: anywhere;
 }
 
 .score {
-    font-size: 50px;
+    font-size: clamp(32px, 7vw, 50px);
     font-weight: 800;
-    height: 80px;
+    min-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,5 +229,128 @@ body {
 
 .restart {
     margin: 10px;
+}
 
+@media (max-width: 768px) {
+    .main-container {
+        gap: 16px;
+        padding: 20px 12px;
+    }
+
+    .quiz-box {
+        width: min(100%, 480px);
+        height: auto;
+        min-height: 0;
+    }
+
+    .question-box {
+        min-height: 120px;
+        padding: 20px 16px;
+    }
+
+    .opt-box {
+        padding: 20px 14px;
+        gap: 14px;
+    }
+
+    .opt {
+        max-width: 100%;
+    }
+
+    .buttons {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn {
+        width: min(150px, 45%);
+    }
+
+    .result-window {
+        min-height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        justify-content: center;
+        padding: 18px 12px;
+        gap: 16px;
+    }
+
+    .title {
+        font-size: 23px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        width: 42px;
+        height: 50px;
+    }
+
+    .quiz-box {
+        width: 100%;
+    }
+
+    .question-box {
+        min-height: 130px;
+        font-size: 15px;
+        padding: 18px 14px;
+    }
+
+    .opt-box {
+        padding: 18px 12px;
+        gap: 12px;
+    }
+
+    .opt {
+        min-height: 46px;
+        border-width: 2px;
+        padding: 8px 10px;
+    }
+
+    .option-name {
+        font-size: 14px;
+    }
+
+    .btn {
+        flex: 1;
+        min-width: 110px;
+        font-size: 15px;
+    }
+
+    .n-btn {
+        width: 110px;
+        font-size: 14px;
+    }
+
+    .result-window {
+        width: calc(100% - 24px);
+        padding: 22px 12px;
+    }
+
+    .restart {
+        width: min(150px, 100%);
+    }
+}
+
+@media (max-height: 600px) {
+    .main-container {
+        min-height: 100vh;
+        min-height: 100dvh;
+        justify-content: flex-start;
+    }
+
+    .quiz-box {
+        height: auto;
+        min-height: 0;
+    }
+
+    .question-box {
+        min-height: 100px;
+    }
+
+    .opt-box {
+        min-height: 250px;
+    }
 }
